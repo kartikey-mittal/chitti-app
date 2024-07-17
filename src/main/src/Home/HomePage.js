@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import IntroUp from "./IntroUp"; // Ensure the path is correct based on your file structure
-import IntroDown from "./IntroDown"; // Ensure the path is correct based on your file structure
+import DownHome from "./DownHome";
+import UpHome from "./UpHome";
 
-const Introduction = () => {
+const HomePage = () => {
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 615);
 
   useEffect(() => {
@@ -22,13 +22,11 @@ const Introduction = () => {
     <div>
       {isMobileView ? (
         <>
-        <div style={{width:"100vw",height:'100vh'}}>
-          <div style={{ height: "50vh", backgroundColor: "pink" ,padding:0,width:'100%'}}>
-       <IntroUp/>
+          <div style={{ height: "50vh", backgroundColor: "pink" ,padding:0}}>
+          <UpHome/>
           </div>
           <div style={{ height: "50vh", backgroundColor: "pink",padding:0 }}>
-            <IntroDown />
-          </div>
+         <DownHome/>
           </div>
         </>
       ) : (
@@ -38,4 +36,4 @@ const Introduction = () => {
   );
 };
 
-export default Introduction;
+export default HomePage;
