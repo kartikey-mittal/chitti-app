@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
 
 function AskDown({ option1, option2, onOptionClick }) {
-  const Emoji1 = '😅';
-  const Emoji2 = '😌';
+  const emojiRegex = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g; // Regex to detect emojis
 
   const [clickedButton, setClickedButton] = useState(null);
+
+  const extractEmoji = (text) => {
+    const emojis = text.match(emojiRegex);
+    return emojis ? emojis[0] : '';
+  };
+
+  const removeEmoji = (text) => {
+    return text.replace(emojiRegex, '');
+  };
 
   const buttonStyle = (button) => ({
     cursor: 'pointer',
@@ -18,7 +26,10 @@ function AskDown({ option1, option2, onOptionClick }) {
     letterSpacing: '0.5px',
     color: '#fff',
     fontFamily: 'ACR',
-    background: button === 'yes' ? 'linear-gradient(-20deg, #fc6076 0%, #ff9a44 100%)' : 'linear-gradient(to top, #4481eb 0%, #04befe 100%)',
+    background:
+      button === 'yes'
+        ? 'linear-gradient(-20deg, #fc6076 0%, #ff9a44 100%)'
+        : 'linear-gradient(to top, #4481eb 0%, #04befe 100%)',
     border: '2px solid #000',
     borderRadius: '0.75rem',
     boxShadow: '0 8px 0 #000',
@@ -26,11 +37,11 @@ function AskDown({ option1, option2, onOptionClick }) {
     transition: 'all 0.1s ease',
     filter: 'drop-shadow(0 15px 20px rgba(100, 77, 255, 0.39))',
     marginTop: '2rem',
-    width:"95%"
+    width: '95%',
   });
 
   const emojiStyle = {
-    fontSize: '1.5em'
+    fontSize: '1.5em',
   };
 
   const componentStyle = {
@@ -42,28 +53,21 @@ function AskDown({ option1, option2, onOptionClick }) {
     justifyContent: 'center',
     alignItems: 'center',
     fontFamily: 'ACR',
-    // backgroundImage: 'url("https://img.freepik.com/free-vector/pastel-gradient-blur-soft-peach-background-vector_53876-171596.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1721174400&semt=ais_user")', backgroundSize: 'cover', 
   };
 
   const handleClick = (option) => {
     setClickedButton(option);
-    onOptionClick(option);
+    onOptionClick(removeEmoji(option));
     setTimeout(() => setClickedButton(null), 100); // Reset the button after 100ms
   };
 
   return (
     <div style={componentStyle}>
-      <button
-        style={buttonStyle('yes')}
-        onClick={() => handleClick(option1)}
-      >
-        {option1} <span style={emojiStyle}>{Emoji1}</span>
+      <button style={buttonStyle('yes')} onClick={() => handleClick(option1)}>
+        {removeEmoji(option1)} <span style={emojiStyle}>{extractEmoji(option1)}</span>
       </button>
-      <button
-        style={buttonStyle('no')}
-        onClick={() => handleClick(option2)}
-      >
-        {option2} <span style={emojiStyle}>{Emoji2}</span>
+      <button style={buttonStyle('no')} onClick={() => handleClick(option2)}>
+        {removeEmoji(option2)} <span style={emojiStyle}>{extractEmoji(option2)}</span>
       </button>
     </div>
   );

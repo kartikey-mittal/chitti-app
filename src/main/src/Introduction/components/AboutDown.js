@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import Lottie from 'lottie-react';
 import ripple2 from './../../assets/ripple.json';
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import { useNavigate } from "react-router-dom";
 
 const AboutDown = () => {
   const lottieRef = useRef(null);
@@ -9,7 +10,7 @@ const AboutDown = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [spokenText, setSpokenText] = useState('');
   const { transcript, resetTranscript } = useSpeechRecognition();
-
+  const navigate = useNavigate();
   const handleClick = () => {
     if (isPaused) {
       startListening();
@@ -28,10 +29,14 @@ const AboutDown = () => {
 
   const stopListening = () => {
     SpeechRecognition.stopListening();
-    setSpokenText(transcript);
+setSpokenText(transcript);
     resetTranscript();
     if (transcript.trim() !== '') {
       alert(`You said: ${transcript}`);
+      
+    //   localStorage.setItem('userAbout',transcript)
+   
+      navigate(`/q`, { state: { transcript } });
     } else {
       alert('No speech detected.');
     }

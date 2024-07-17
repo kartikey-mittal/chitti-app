@@ -4,7 +4,7 @@ import AboutUp from "./components/AboutUp";
 import AskUp from "./components/AskUp";
 
 const IntroUp = () => {
-    const text = "Hey Lakshay";
+    const text = "Tell me about yourself, but in Lakshay's cool vibe! 🌟";
 
 
   const thinkingBoxImage = "https://i.ibb.co/r3rxTt4/1.png"; 

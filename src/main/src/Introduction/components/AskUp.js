@@ -42,8 +42,8 @@ const AskUp = ({ text, thinkingBoxImage, mascotImage, mood }) => {
             <img src="https://i.ibb.co/r3rxTt4/1.png"  style={{maxWidth: '40vh', maxHeight: 'auto'}}alt="" />
                <div style={{
                     position: 'absolute',
-                    top: '45%', 
-                    left: '60%', 
+                    top: '48%', 
+                    left: '55%', 
                     transform: 'translate(-50%, -50%)', 
                     fontSize: '1.2rem', 
                     textAlign: 'center', 
