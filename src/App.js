@@ -6,12 +6,14 @@ import MeetingScreen from './main/MeetingScreen';
 import Test from './main/src/Test';
 import Introduction from './main/src/Introduction/Introduction';
 
+
+
 const routes = [
   { path: '/meeting', element: <MeetingScreen />,},
   { path: '/', element: <Test />,},
-  { path: '/intro', element: <Introduction />,},
-
-
+  { path: '/intro', element: <Introduction mood="happy" />,},
+  
+  
 ];
 
 const App= ()=> {
