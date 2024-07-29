@@ -40,7 +40,15 @@ const Playground = () => {
       {/* meeting hall */}
       <div 
         className="meetinghall" 
-       
+        style={{
+            width: '30px', 
+            height: '20px',
+            position: 'relative', 
+            top: '2rem',
+            left: '1rem',
+            
+            cursor: 'pointer'
+          }}
         onClick={handleMeetingHallClick}
       >
         <MeetingHallAvatars numberOfPeople={numberOfPeople} />
@@ -53,7 +61,7 @@ const Playground = () => {
           width: '220px', 
           height: '220px',
           position: 'relative', 
-          top: '2rem',
+          top: '15rem',
           left: '1rem',
           backgroundImage: "url('https://i.postimg.cc/vm9hFdJC/IMG-20240729-000045-296.png')",
           backgroundSize: 'cover', 
@@ -105,8 +113,8 @@ const Playground = () => {
           width: '200px', 
           height: '200px',
           position: 'relative', 
-          bottom: '23.5rem',
-          left: '11rem',
+          bottom: '9.5rem',
+          left: '12rem',
           backgroundImage: "url('https://i.postimg.cc/NjYt3g2r/IMG-20240729-000045-766.png')",
           backgroundSize: 'cover', 
           backgroundPosition: 'center',
